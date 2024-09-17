@@ -1,0 +1,30 @@
+
+volumes:
+  postgres_data:
+    
+services:
+  web:
+    image: todo:latest
+    container_name: todo_web
+    build: 
+      context: ../../to_do_list
+      dockerfile: docker/Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ../../to_do_list:/web
+    ports:
+      - 8014:8014
+    command: /start.sh
+    entrypoint: /entrypoint.sh
+    restart: on-failure
+    env_file: ../.env
+
+  db:
+    container_name: todo_db
+    image: postgres:15-alpine
+    ports:
+      - 5453:5453
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file: ../.env.db
