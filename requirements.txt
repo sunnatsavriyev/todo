@@ -16,3 +16,6 @@ psycopg2-binary
 psycopg_binary
 psycopg
 django-environ
+djangorestframework-simplejwt==5.3.1 
+pyjwt==2.9.0
+environ ==1.0

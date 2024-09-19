@@ -12,7 +12,7 @@ class ToDoApiView(ListCreateAPIView):
 
 
 class ToDoDetail(RetrieveUpdateDestroyAPIView):
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (IsAuthorOrReadOnly)
     serializer_class = ToDoSerializer
 
     def get_queryset(self):

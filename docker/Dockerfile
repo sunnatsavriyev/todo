@@ -10,17 +10,16 @@ RUN pip install --upgrade pip
 # RUN mkdir /web
 WORKDIR /web
 
-#
-# Install dependencies
-COPY requirements.txt /web/requirements.txt
+# Kerakli paketlarni o'rnatamiz
+COPY requirements.txt .  
 
-RUN pip install -r /web/requirements.txt
+RUN pip install -r requirements.txt 
 
-# Copy the rest of the application code
-COPY . /web
 
-# Copy scripts (ensure the path is correct)
-COPY scripts/ /scripts/
+
+# Django kodini konteynerga nusxalaymiz
+COPY . .
+COPY ./scripts/ /
 # RUN chmod +x /entrypoint.sh
 # RUN chmod +x /start.sh
 
