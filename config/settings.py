@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework_simplejwt',
+    'drf_spectacular',
+    'django_filters',
     
 ]
 
@@ -63,8 +65,23 @@ REST_FRAMEWORK={
         # 'rest_framework.authentication.SessionAuthentication',
         # 'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS':'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+        
+    ),
+        
 }
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'DRF todo',
+    'DESCRIPTION': 'DRF bu to do projectim uchun',
+    'VERSION': '1.0.0',
+
+}
+
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
